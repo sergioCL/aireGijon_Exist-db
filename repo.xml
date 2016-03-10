@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<meta xmlns="http://exist-db.org/xquery/repo">
+    <description>aplicación para ver el estado del aire de Gijón en las diferentes estaciones de la ciudad en actualidad y en el pasado </description>
+    <!--author>Diego Jaular</author-->
+    <author>Sergio Cueto</author>
+    <website/>
+    <status>alpha</status>
+    <license>GNU-LGPL</license>
+    <copyright>true</copyright>
+    <type>application</type>
+    <target>alumnos/aireGijon</target>
+    <prepare>pre-install.xql</prepare>
+    <finish/>
+    <permissions user="admin" password="" group="dba" mode="rw-rw-r--"/>
+</meta>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+
+<!--script language="javascript" src="js/jquery-1.2.6.min.js"></script-->
+    <script language="javascript">
+function recargar(){
+    var mDivTexto = document.createElement('div');
+    mDivTexto.class='data';
+           
+    var dataTemplate = document.createAttribute('data-template');
+    dataTemplate.value = 'app:consulta-estacion';
+    mDivTexto.setAttributeNode(dataTemplate);
+               
+    var dataTemplateStationDir = document.createAttribute('data-template-stationDir');
+    dataTemplateStationDir.value = document.getElementsByName('stations')[0].value;
+    mDivTexto.setAttributeNode(dataTemplateStationDir);
+                
+    alert(dataTemplateStationDir.value);
+                
+    var mP =document.getElementById('pContent');
+    alert(mDivTexto);
+    alert(mP.childNodes[0]);
+    mP.replaceChild(mDivTexto, mP.childNodes[0]);
+    alert('el codigo fuente se modifica pero la consulta xquery no se ejecuta de nuevo con los nuevos parámetros');
+    
+    //var variable_post="Mi texto recargado";
+       /// Invocamos a nuestro script PHP
+    //$.post("miscript.php", { variable: variable_post }, function(data){
+       /// Ponemos la respuesta de nuestro script en el DIV recargado
+    //$("#recargado").html(data);
+    //});
+    
+    }
+
+</script>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="page-header">
+                <h1>Situación actuial:</h1>
+            </div>
+            <div class="alert alert-success" href="info.html">
+                <p>
+                    <div data-template="app:averageCurrentValues"/>
+                    <br/>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        El estado actual del aire es una media de los valores de la última medición de cada estación
+                        , para saber con exactitud la calidad del aire de su zona consulte la información de la estación correspondiente   
+                    </p>
+                </div>
+                
+                <!--div class="col-md-6">
+                    <div data-template="app:test"/>
+                </div-->
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h2>Estaciones de medición</h2>
+            <form action="app:consulta-estacion">
+                <input type="submit" value="Consultar" onclick="javascript:recargar();"/>
+                <div data-template="app:combo-estaciones"/>
+                <h2>Valores:</h2>
+                <div class="alert alert-success" href="info.html">
+                    <p id="pContent">
+                        <div class="data" id="aaa" data-template="app:consulta-estacion" data-template-stationDir="Avda. Constitución"/>
+                    </p>
+                </div>
+            </form>
+            <!--form action="" method="">
+                <button type="submit">Historial</button>
+            </form-->
+        </div>
+    </div>
+</div>
